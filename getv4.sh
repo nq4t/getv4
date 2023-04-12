@@ -11,5 +11,5 @@
 
 dev=em0
 
-ifconfig $dev | grep inet | awk -F '[ \t]+|/' '{print $3}' | grep -v ^fe80
+ifconfig $dev | awk '/inet/ && !/inet6/ {print $2}'
 #ip -4 addr show dev $dev | awk '/inet/ {print $2}' # for machines using `ip`
